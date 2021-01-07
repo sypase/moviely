@@ -38,3 +38,4 @@ router.post('/', async (req, res) => {
   movie.save();
   res.send(rental);
 });
+module.exports = router;
