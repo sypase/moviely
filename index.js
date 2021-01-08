@@ -5,12 +5,7 @@ const express = require('express');
 const customer = require('./routes/customers');
 const genre = require('./routes/genres');
 const movie = require('./routes/movies');
-<<<<<<< HEAD
 const rental = require('./routes/rentals');
-
-=======
-const rental=require('./routes/rentals')
->>>>>>> ObjectId-Validation
 const app = express();
 mongoose
   .connect(`mongodb://localhost/vidly`)
