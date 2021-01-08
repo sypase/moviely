@@ -11,13 +11,13 @@ router.get('/', async (req, res) => {
   res.send(genre);
 });
 router.post('/', async (req, res) => {
-  debug("here1")
+  debug('here1');
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  debuge("here2")
+  debuge('here2');
   const genre = await Genre.findById(req.body.genreId);
   if (!genre) return res.status(404).send('Invalid Genre.');
-  let movie = new Movie({
+  const movie = new Movie({
     title: req.body.title,
     genre: {
       _id: genre._id,
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     numberInStock: req.body.numberInStock,
     dailyRentalRate: req.body.dailyRentalRate,
   });
-  movie = await movie.save();
+  await movie.save();
   res.send(movie);
 });
 ///PUT,DELETE,GET BAKI
