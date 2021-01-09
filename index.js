@@ -6,9 +6,11 @@ const customer = require('./routes/customers');
 const genre = require('./routes/genres');
 const movie = require('./routes/movies');
 const rental = require('./routes/rentals');
+const user = require('./routes/users');
 const app = express();
 mongoose
-  .connect(`mongodb://localhost/vidly`)
+  .connect(`mongodb://localhost/vidly`, {
+  })
   .then(() => console.log('Connected to database....'))
   .catch((err) => console.error('Connection to database failed.'));
 
@@ -17,6 +19,7 @@ app.use('/api/customers', customer);
 app.use('/api/genres', genre);
 app.use('/api/movies', movie);
 app.use('/api/rentals', rental);
+app.use('/api/users', user);
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on Port ${port}`));
